@@ -1,0 +1,44 @@
+---
+galaxy_info:
+  author: Dmitrii Kashin
+  description: install kubernetes cluster
+  role_name: k8s
+  license: MIT
+
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+
+  galaxy_tags:
+    - kubernetes
+    - k8s
+    - cluster
+
+dependencies:
+  # common base, install binaries
+  - role: freehck.k8s_base
+    vars:
+      k8s_base_node_ip: "{{ k8s_node_ip }}"
+      k8s_base_ver: "{{ k8s_ver }}"
+
+  # create a cluster
+  - role: freehck.k8s_init
+    vars:
+      k8s_init_node_ip: "{{ k8s_node_ip }}"
+      k8s_init_node_name: "{{ k8s_node_name }}"
+      k8s_init_cidr: "{{ k8s_cidr }}"
+    when: k8s_is_master
+
+  # join nodes - first run on master to get registration token, then on nodes to register
+  - role: freehck.k8s_join
+    vars:
+      k8s_join_is_master: "{{ k8s_is_master }}"
+
+  # cni
+  - role: freehck.k8s_calico
+    when:
+      - k8s_is_master
+      - k8s_enable_calico
