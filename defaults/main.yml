@@ -6,8 +6,7 @@ k8s_cidr: "192.168.0.0/16"  # good default, calico uses it
 
 k8s_enable_calico: true
 k8s_calico_ver: "v3.10"
-k8s_calico_download_definition: false
-# k8s_calico_definition_url: ""
-# k8s_calico_definition_filename: "calico-{{ k8s_calico_ver }}.yml"
+k8s_calico_autodetection_method: "first-found"
 
 k8s_is_master: false
+
