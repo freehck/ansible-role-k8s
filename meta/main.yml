@@ -42,3 +42,14 @@ dependencies:
     when:
       - k8s_is_master
       - k8s_enable_calico
+
+  # helm package manager (must be installed when cluster is ready because of RBAC)
+  - role: freehck.helm
+    when:
+      - k8s_is_master
+
+  # apps
+  - role: freehck.k8s_app_dashboard
+    when:
+      - k8s_is_master
+      - k8s_app_install_dashboard
