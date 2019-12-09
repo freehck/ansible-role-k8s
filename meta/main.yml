@@ -43,6 +43,11 @@ dependencies:
       - k8s_is_master
       - k8s_enable_calico
 
+  - role: freehck.k8s_flannel
+    when:
+      - k8s_is_master
+      - k8s_enable_flannel
+
   # helm package manager (must be installed when cluster is ready because of RBAC)
   - role: freehck.helm
     when:
