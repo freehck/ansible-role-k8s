@@ -10,7 +10,7 @@ k8s_calico_autodetection_method: "first-found"
 
 k8s_enable_flannel: false
 k8s_flannel_ver: "master-2019-12-09"
-k8s_flannel_iface: "enp0s8"
+# k8s_flannel_iface: "enp0s8"
 
 k8s_app_install_dashboard: false
 k8s_app_dashboard_download_definition: false

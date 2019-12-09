@@ -15,11 +15,13 @@ Role Variables
 
 #### Common cluster configuration
 
+
 ##### Global
 
 `k8s_ver`: Kubernetes version to install (default is `1.16.2-00`)
 
 `k8s_cidr`: CIDR your pod network will use (default is `192.168.0.0/16`)
+
 
 ##### Unique per host
 
@@ -27,17 +29,26 @@ Role Variables
 
 `k8s_node_name`: node name (default is `{{ inventory_hostname }}`
 
+
 ##### Special
 
 `k8s_is_master`: this flag must be set to `true` only for kubernetes master node, so do it in `host_vars` or in your `inventory` (default is `false`)
 
 
-
-#### Calico CNI
+##### Calico CNI
 
 `k8s_enable_calico`: flag enabling Calico CNI (default is `true`)
 
 `k8s_calico_ver`: Calico CNI's version to install (default is `v3.10`)
+
+
+##### Flannel CNI
+
+`k8s_enable_flannel`: flag enabling Flannel CNI (default is `false`)
+
+`k8s_flannel_ver`: Flannel CNI's version to install (default is `master-2019-12-09`)
+
+`k8s_flannel_iface`: Flannel CNI's interface for nodes inter-communications, not set by default
 
 
 Example
