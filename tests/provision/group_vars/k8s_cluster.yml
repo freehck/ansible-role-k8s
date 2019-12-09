@@ -2,8 +2,11 @@
 k8s_ver: "1.16.2-00"
 k8s_node_ip: "{{ ansible_host }}"
 k8s_cidr: "192.168.0.0/16"
-k8s_enable_calico: true
+k8s_enable_calico: false
 k8s_calico_ver: "v3.10"
 k8s_calico_autodetection_method: "can-reach={{ k8s_node_ip }}"  # applied to master, so it's master's node ip
+k8s_enable_flannel: true
+k8s_flannel_ver: "master-2019-12-09"
+k8s_flannel_iface: "enp0s8"
 k8s_app_install_dashboard: true
 k8s_app_dashboard_ver: "v2.0.0-beta5"

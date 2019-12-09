@@ -29,7 +29,7 @@ dependencies:
     vars:
       k8s_init_node_ip: "{{ k8s_node_ip }}"
       k8s_init_node_name: "{{ k8s_node_name }}"
-      k8s_init_cidr: "{{ k8s_cidr }}"
+      k8s_init_cidr: "{{ k8s_pod_network_cidr }}"
     when: k8s_is_master
 
   # join nodes - first run on master to get registration token, then on nodes to register
@@ -45,7 +45,7 @@ dependencies:
 
   - role: freehck.k8s_flannel
     vars:
-      k8s_flannel_network_pod_cidr: "{{ k8s_cidr }}"
+      k8s_flannel_network_pod_cidr: "{{ k8s_pod_network_cidr }}"
     when:
       - k8s_is_master
       - k8s_enable_flannel
