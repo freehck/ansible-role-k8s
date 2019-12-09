@@ -39,6 +39,8 @@ dependencies:
 
   # cni
   - role: freehck.k8s_calico
+    vars:
+      k8s_calico_pod_network_cidr: "{{ k8s_pod_network_cidr }}"
     when:
       - k8s_is_master
       - k8s_enable_calico
