@@ -44,6 +44,8 @@ dependencies:
       - k8s_enable_calico
 
   - role: freehck.k8s_flannel
+    vars:
+      k8s_flannel_network_pod_cidr: "{{ k8s_cidr }}"
     when:
       - k8s_is_master
       - k8s_enable_flannel
