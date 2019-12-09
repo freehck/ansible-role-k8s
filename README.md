@@ -15,12 +15,11 @@ Role Variables
 
 #### Common cluster configuration
 
-
 ##### Global
 
 `k8s_ver`: Kubernetes version to install (default is `1.16.2-00`)
 
-`k8s_cidr`: CIDR your pod network will use (default is `192.168.0.0/16`)
+`k8s_pod_network_cidr`: CIDR your pod network will use (default is `192.168.0.0/16`)
 
 
 ##### Unique per host
@@ -70,7 +69,7 @@ Example
     ---
     k8s_ver: "1.16.2-00"
     k8s_node_ip: "{{ ansible_host }}"
-    k8s_cidr: "192.168.0.0/16"
+    k8s_pod_network_cidr: "192.168.0.0/16"
     k8s_enable_calico: true
     k8s_calico_ver: "v3.10"
 
